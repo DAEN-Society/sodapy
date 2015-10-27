@@ -200,7 +200,7 @@ class Socrata(object):
 
         # for other request types, return most useful data
         content_type = response.headers.get('content-type').strip().lower()
-        if content_type == "application/json; charset=utf-8":
+        if content_type == "application/json;charset=utf-8":    # DAEN-Society - fullerdk - removed extra space: had problem with response mismatch using opendata.demo.socrata.com/resource/fn7m-jy3w.json
             return response.json()
         elif content_type == "text/csv; charset=utf-8":
             csv_stream = StringIO(response.text)
